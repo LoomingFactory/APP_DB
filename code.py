@@ -24,8 +24,6 @@ def ax_despres_login():
         st.session_state['pagina'] = 'dins_app'
 
 
-
-
 # li dic que comenci amb la pagina de login
 if 'pagina' not in st.session_state:
 	st.session_state['pagina'] = 'login'
@@ -49,7 +47,6 @@ if st.session_state['pagina'] == 'login':
 ##################################################
 
 elif st.session_state['pagina'] == 'dins_app':
-
 
     with st.sidebar:
 
@@ -93,6 +90,7 @@ elif st.session_state['pagina'] == 'dins_app':
         st.write('   ')
         MOSTRAR_DB = st.button('Mostrar DB')
 
+
     ############################### CONNECTO DB MONGO ##################################
     st.title('Resultats de la cerca')
     st.write("Aquí es mostraran la base de dades de EINES i ENERGIES per l'interval seleccionat, ademés de la DB de ENERGIES en el període restringit a les dades de EINES anteriors")
@@ -101,7 +99,7 @@ elif st.session_state['pagina'] == 'dins_app':
         # --------------- CONNECTO MONGO: Uses st.experimental_singleton to only run once ---------------
         @st.experimental_singleton
         def init_connection():
-            return pymongo.MongoClient(st.secrets["mongo"]["uri"])
+            return pymongo.MongoClient(st.secrets["mongo"]["uri_publica"]) #"mongodb://xxxxxxxxxx:yyyyy/" on xxx... = ip públic del ordi al q es connecta // yy = port on esta el mongodb
 
         try:
             client = init_connection()
