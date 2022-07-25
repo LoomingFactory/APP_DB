@@ -103,6 +103,7 @@ elif st.session_state['pagina'] == 'dins_app':
 
         try:
             client = init_connection()
+	    st.info ("s'ha connectat correctament a la base de dades")
         except pymongo.errors.ServerSelectionTimeoutError as errorTiempo:
             st.error("Temps de connexio al MongoDB excedit. Temps: "+errorTiempo)
         except pymongo.errors.ConnectionFailure as errorConexion:
